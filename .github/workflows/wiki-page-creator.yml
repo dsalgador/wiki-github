@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Upload docs to Wiki
-      uses: docker://decathlon/wiki-page-creator-action:2.0.1
+      uses: docker://decathlon/wiki-page-creator-action:latest
       env:
         GH_PAT: ${{ secrets.GH_PAT }}
         ACTION_MAIL: daniel.salgado.rojo@gmail.com
