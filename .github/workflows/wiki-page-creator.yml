@@ -1,8 +1,19 @@
-- name: Upload Release Notes to Wiki
-  uses: docker://decathlon/wiki-page-creator-action:2.0.1
-  env:
-    GH_PAT: ${{ secrets.GH_PAT }}
-    ACTION_MAIL: daniel.salgado.rojo@gmail.com
-    ACTION_NAME: dsalgador
-    OWNER: dsalgador
-    REPO_NAME: wiki-github
+name: Upload docs to Wiki
+on:
+  workflow_dispatch: #allows repo admins to trigger this workflow from the Actions tab
+  push:
+    branches: 
+      - master
+jobs:
+  release-notes:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Upload docs to Wiki
+      uses: docker://decathlon/wiki-page-creator-action:2.0.1
+      env:
+        GH_PAT: ${{ secrets.GH_PAT }}
+        ACTION_MAIL: daniel.salgado.rojo@gmail.com
+        ACTION_NAME: dsalgador
+        OWNER: dsalgador
+        REPO_NAME: wiki-github
+        MD_FOLDER: docs  
